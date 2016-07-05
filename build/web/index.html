@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+    <head>
+        <style type="text/css">
+            #tb5 {
+	border:2px solid #456879;
+	border-radius:15px;
+	height: 30px;
+	width: 320px;
+}
+
+#regis {
+  
+ 
+  font-family: Arial Black;
+  //color: #FFFFFF;
+  font-size: 23px;
+  padding: 6px 50px 30px 350px;
+ 
+}
+
+#btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 28px;
+  font-family: Arial Black;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 6px 50px 6px 50px;
+  text-decoration: none;
+}
+            
+   #bg{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+   }
+ </style>
+ <script> 
+ window.onload = function() {
+ 
+    function bgadj(){
+             
+        var element = document.getElementById("bg");
+         
+        var ratio =  element.width / element.height;   
+         
+        if ((window.innerWidth / window.innerHeight) < ratio){
+         
+            element.style.width = 'auto';
+            element.style.height = '100%';
+             
+            <!-- si la imagen es mas ancha que la ventana la centro -->
+            if (element.width > window.innerWidth){
+             
+                var ajuste = (window.innerWidth - element.width)/2;
+                 
+                element.style.left = ajuste+'px';
+             
+            }
+         
+        }
+        else{  
+         
+            element.style.width = '100%';
+            element.style.height = 'auto';
+            element.style.left = '0';
+ 
+        }
+         
+    }
+<!-- llamo a la función bgadj() por primera vez al terminar de cargar la página -->
+    bgadj();
+    <!-- vuelvo a llamar a la función  bgadj() al redimensionar la ventana -->
+    window.onresize = function() {
+        bgadj();
+ 
+    }
+  
+ 
+}
+  </script>
+    </head>
+    <body>
+        
+        
+        <img id="bg" src="graduado.jpg"  alt="background" /> 
+     
+        <div class="page-container"  style="text-align:center;">
+
+
+
+          <br><br><br><br><br>  <h1 align="CENTER"><FONT FACE="arial" SIZE=30 COLOR="WHITE">INICIAR SESION</FONT></h1>
+            <form action="Login" method="post" >
+                
+            <input id="tb5" type="number" name="code"  class="code" placeholder="Codigo" required="llena campo"><br><br>
+            <input  id="tb5" type="password" name="userpass"  class="password" placeholder="Contrase&ntilde;a" required="llena campo"><br><br>
+                
+                <button id="btn" type="submit" value="Login" >Ingresar</button>  <br> <br> <br>
+                       
+
+                       <h1 id="regis" ><a href="Registrarse.html">Registrarse</a></h1>
+            </form>
+                
+          
+
+        </div>
+
+    </body>
+</html>

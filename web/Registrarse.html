@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+    <head>
+        <style type="text/css">
+            #campotexto {
+	border:2px solid #456879;
+	border-radius:15px;
+	height: 30px;
+	width: 250px;
+        font-size: 13pt;
+}
+
+     #regs {
+	border:2px solid #456879;
+	border-radius:15px;
+	height: 30px;
+	width: 250px;
+        font-size: 13pt;
+}
+
+#texto{
+    font-family: Arial Black;
+    font-size: 23px;
+}
+
+
+
+#datepicker {
+  border:2px solid #456879;
+	border-radius:15px;
+	height: 30px;
+	width: 250px;
+}
+
+#datepicker2 {
+  border:2px solid #456879;
+	border-radius:15px;
+	height: 30px;
+	width: 250px;
+}
+
+#registro {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 28px;
+  font-family: Arial Black;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 6px 50px 6px 50px;
+  text-decoration: none;
+}
+            
+   #bg{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+   }
+ </style>
+ <script> 
+ window.onload = function() {
+ 
+    function bgadj(){
+             
+        var element = document.getElementById("bg");
+         
+        var ratio =  element.width / element.height;   
+         
+        if ((window.innerWidth / window.innerHeight) < ratio){
+         
+            element.style.width = 'auto';
+            element.style.height = '100%';
+             
+            <!-- si la imagen es mas ancha que la ventana la centro -->
+            if (element.width > window.innerWidth){
+             
+                var ajuste = (window.innerWidth - element.width)/2;
+                 
+                element.style.left = ajuste+'px';
+             
+            }
+         
+        }
+        else{  
+         
+            element.style.width = '100%';
+            element.style.height = 'auto';
+            element.style.left = '0';
+ 
+        }
+         
+    }
+<!-- llamo a la función bgadj() por primera vez al terminar de cargar la página -->
+    bgadj();
+    <!-- vuelvo a llamar a la función  bgadj() al redimensionar la ventana -->
+    window.onresize = function() {
+        bgadj();
+ 
+    }
+  
+ 
+}
+  </script>
+
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#dialog" ).dialog();
+  });
+  </script>
+  
+  
+  <script language=javascript>
+      
+   function validateForm(forma1) {
+      if (forma1.codigo.value == "")||(forma1.userpaas.value == "")||(forma1.nombre.value == "")||(forma1.correo.value == "")||(forma1.telefono.value == "")||(forma1.ingreso.value == "")||(forma1.egreso.value == "")||(forma1.codigo.promedio == "") {
+         alert ("Llenar todos los campos ");
+      
+      } else {
+      
+      }
+   }
+</script>
+  
+    </head>
+    <body>
+        
+ <!--<div id="dialog" title="Basic dialog">
+  <!--<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+<!--</div>-->
+        
+     <img id="bg" src="blanco.jpg"  alt="background" /> 
+     <div class="page-container"  style="text-align:left;">
+        
+         <form name="forma1"  action="Registro" method="post"  >
+            
+ 
+       
+    <h2 align="center"><img src="registro.png"><FONT FACE="arial" SIZE=60 COLOR="BLUE">Registro de titulaci&oacute;n</FONT></h2>
+             
+        <table>      
+        <tr>        
+            <td><p id="texto">C&oacute;digo <br> <input id="campotexto" type="number" name="codigo"  class="codigo"  min="0" max="0" required="llena campo"></p> </td>
+        <td><p id="texto">Nueva contrase&ntilde;a <br> <input id="campotexto" type="password" name="userpass"  class="userpass" required="llena campo" ></p> </td>
+        <td><p id="texto">Nombre <br> <input id="campotexto" type="text" name="nombre"  class="nombre" required="llena campo"></p></td>
+        <td><p id="texto">Correo <br> <input id="campotexto" type="email" name="correo"  class="correo" required="llena campo"></p></td>
+        <td><p id="texto">Telefono <br> <input id="campotexto" type="number" name="telefono"  class="telefono" required="campo"  min="0" max="0"></p></td>            
+        </tr>
+        
+        <tr>
+          
+        <td>     
+            <p id="texto" > Modalidad <br> 
+                <select  id="campotexto" name="modalidad" >
+            <option value="modo"> Selecciona la modalidad </option>
+            <option value="tesis">Tesis</option>
+            <option value="tesina">Tesina</option>
+            <option value="informe">Informe</option>
+            <option value="excelencia">Exelencia</option>
+            <option value="promedio">Por promedio</option>
+           </select>
+            </p>
+        </td> 
+        
+        <td>
+             <div id="date1"> 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>     
+<script>
+ $.datepicker.regional['es'] = {
+ closeText: 'Cerrar',
+ prevText: '<Ant',
+ nextText: 'Sig>',
+ currentText: 'Hoy',
+ monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado'],
+ dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ weekHeader: 'Sm',
+ dateFormat: 'mm/dd/yy',
+ firstDay: 1,
+ isRTL: false,
+ showMonthAfterYear: true,
+ yearSuffix: ''
+ };
+ $.datepicker.setDefaults($.datepicker.regional['es']);
+$(function () {
+$("#fecha").datepicker();
+});
+</script>
+
+<p id="texto">Fecha de ingreso <br> <input type="text" name="ingreso"  id="datepicker" required="fingreso"   ></p>
+            </div>
+            
+        </td> 
+        <td>
+             <div id="date2"> 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker2" ).datepicker();
+  });
+  </script>     
+<script>
+ $.datepicker.regional['es'] = {
+ closeText: 'Cerrar',
+ prevText: '<Ant',
+ nextText: 'Sig>',
+ currentText: 'Hoy',
+ monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado'],
+ dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ weekHeader: 'Sm',
+ dateFormat: 'dd/mm/yy',
+ firstDay: 1,
+ isRTL: false,
+ showMonthAfterYear: false,
+ yearSuffix: ''
+ };
+ $.datepicker.setDefaults($.datepicker.regional['es']);
+$(function () {
+$("#fecha2").datepicker();
+});
+</script>
+
+<p id="texto">Fecha de egreso <br> <input type="text" name="egreso"  id="datepicker2" required="fegreso" readonly></p>
+            </div>      
+        
+     <td><p id="texto">Promedio egreso <br> <input  min="0" max="0" id="campotexto" type="number" name="promedio"  class="promedio" required="llena campo"></p></td>             
+     
+     <td>
+        
+<p id="texto" >Fecha de registro <br> 
+
+<input id="regs" type="text" name="Registro"  class="promedio" readonly  >
+<script type="text/javascript"> 
+
+var mydate=new Date(); 
+var year=mydate.getYear(); 
+if (year < 1000) 
+year+=1900; 
+var day=mydate.getDay(); 
+var month=mydate.getMonth()+1; 
+if (month<10) 
+month="0"+month; 
+var daym=mydate.getDate(); 
+if (daym<10) 
+daym="0"+daym; 
+//document.write("<small><font color='000000' face='Arial'><b>"+daym+"/"+month+"/"+year+"</b></font></small>");
+
+var Labelfecha=(+daym+"/"+month+"/"+year);
+//document.write("  "+Labelfecha)
+document.getElementById("regs").value = Labelfecha;
+</script> 
+
+
+       
+     
+  </p></td>    
+     
+     
+     
+        </tr>
+        
+       
+        </table>
+      <!--  <p id="texto" >kardex / Carta de liberacion social <br> <input id="archi" type="file" name="archivo"  class="archivo" ></p>-->
+        <br>
+             
+  
+        <button id="registro" type="submit" value="Enviar" name="enviar"  >Registrarse </button> 
+ 
+ 
+                                                                                                                                                                                   
+     
+ 
+            </form>
+           
+       
+         <form action="index.html">
+             
+          <button  type="button" value="Atras" name="atras">Atras </button> 
+
+         </form>
+        </div>
+        
+  
+        
+
+        
+     
+    </body>
+</html>
